@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!--列表-->
+	    <ul class="mui-table-view">
+		    <li class="mui-table-view-cell"><a class="mui-navigate-right">测试</a></li>
+		</ul>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function () {
+				$.get('../html/menu.json',function (data) {
+					var html='';
+					$('.mui-table-view').html(html);
+					JSON.parse(data).map(function (_data) {
+						html+='<li class="mui-table-view-cell" onclick="javascript:openW(\''+_data.title+','+_data.link+'\');"><a class="mui-navigate-right">'+_data.id+'.'+_data.title+'</li>';
+					});
+					$('.mui-table-view').html(html);
+				});
+			});
+			function openW (title,link) {
+			   mui.openWindow({
+			   	url:'detail.html',
+			   	id:'detail',
+			   	extras:{
+				  	link:link,
+				   	title:title
+				  }
+			   });
+		    }
+		</script>
+	</body>
+
+</html>
