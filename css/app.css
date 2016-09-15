@@ -1,3 +1,6 @@
+.mui-icon{
+	color: #F5DA55;
+}
 .indexbg{
 	background: url(../img/cover.jpg) no-repeat fixed top left; 
 	background-size: 100% 100%;
@@ -27,7 +30,7 @@
 	right: 0.5em;
 }
 .indextab a{
-	color: #39B4FC;
+	color: #F5DA55;
 }
 .indextab p{
 	color: white;
@@ -41,7 +44,7 @@
 		color: white;
 	}
 	50%{
-		color: #39B4FC;
+		color: #F5DA55;
 	}
 	100%{
 		color: white;
@@ -52,7 +55,7 @@
 		color: white;
 	}
 	50%{
-		color: #39B4FC;
+		color: #F5DA55;
 	}
 	100%{
 		color: white;
@@ -63,7 +66,7 @@
 		color: white;
 	}
 	50%{
-		color: #39B4FC;
+		color: #F5DA55;
 	}
 	100%{
 		color: white;
