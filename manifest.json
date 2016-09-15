@@ -195,7 +195,14 @@
 					"js/marked.js",
 					"img/cover_thumbnail.jpg",
 					"docs/README.md",
-					"docs/intro.md"
+					"docs/intro.md",
+					"js/commn.js",
+					"js/browser.min.js",
+					"js/mui.min.js",
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jquery-1.11.0.min.js"
 				],
 				"refer": [],
 				"priority": 0

@@ -14,9 +14,10 @@
 		    <h1 class="mui-title">目录</h1>
 		    <a class="mui-icon mui-icon-search mui-pull-right" id="search"></a>
 		</header>
+		<script src="../js/browser.min.js" ></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/commn.js" ></script>
-		<script type="text/javascript">
+		<script type="text/babel">
 			mui.init({
 				 subpages:[{
 			      url:"list_sub.html",
@@ -27,13 +28,13 @@
 			      }
 			    }]
 			});
-			mui.plusReady(function () {
-				document.getElementById("search").addEventListener('tap',function (e) {
+			mui.plusReady(()=>{
+				document.getElementById("search").addEventListener('tap',e=>{
 					e.detail.gesture.preventDefault(); 
-					var btnArray = ['取消', '确认'];
-					mui.prompt('点击确认后将前往github的开源项目搜索', '输入关键词...', '搜索', btnArray, function(e) {
+					let btnArray = ['取消', '确认'];
+					mui.prompt('点击确认后将前往github的开源项目搜索', '输入关键词...', '搜索', btnArray, e=>{
 						if (e.index == 1) {
-							 var url = 'https://github.com/ruanyf/es6tutorial/search?utf8=%E2%9C%93&q='+e.value;
+							 let url = 'https://github.com/ruanyf/es6tutorial/search?utf8=%E2%9C%93&q='+e.value;
 							openShow(url);
 						} else {
 							mui.toast('您已取消！');

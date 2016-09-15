@@ -17,11 +17,11 @@
 		<script src="../js/jquery-1.11.0.min.js" ></script>
 		<script type="text/javascript">
 			mui.init();
-			mui.plusReady(function () {
-				$.get('../html/menu.json',function (data) {
+			mui.plusReady(function() {
+				$.get('../html/menu.json',function (data){
 					var html='';
 					$('.mui-table-view').html(html);
-					JSON.parse(data).map(function (_data) {
+					JSON.parse(data).map(function(_data){
 						html+='<li class="mui-table-view-cell" onclick="javascript:openW(\''+_data.title+','+_data.link+'\');"><a class="mui-navigate-right">'+_data.id+'.'+_data.title+'</li>';
 					});
 					$('.mui-table-view').html(html);

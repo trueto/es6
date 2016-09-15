@@ -16,23 +16,24 @@
 		    </h1>
 		    <a class="mui-icon mui-icon-search mui-pull-right" id="go"></a>
 		</header>
+		<script src="../js/browser.min.js" ></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/jquery-1.11.0.min.js"></script>
-		<script type="text/javascript">
+		<script type="text/babel">
 			mui.init();
-			mui.plusReady(function () {
-				var ws=plus.webview.currentWebview(),
+			mui.plusReady(()=>{
+				let ws=plus.webview.currentWebview(),
 					embed=null,
 					posturl=ws.url,
 					go=document.getElementById("go");
 				$('#search').attr('placeholder',posturl);
-				document.getElementById("back").addEventListener('tap',function () {
+				document.getElementById("back").addEventListener('tap',()=> {
 					mui.back();
 					plus.nativeUI.closeWaiting();
 				});
-				go.addEventListener('tap',function () {
-					var url=$('#search').val().toLowerCase().trim();
-					var reg="^((https|http|ftp|rtsp|mms)?://)";
+				go.addEventListener('tap',()=>{
+					let url=$('#search').val().toLowerCase().trim(),
+					    reg="^((https|http|ftp|rtsp|mms)?://)";
 					url=new RegExp(reg).test(url) ? url : ('http://'+url);
 					if (IsURL(url)) {
 						embed.loadURL(url);
@@ -41,8 +42,8 @@
 					}
 				});
 				function IsURL(str_url){ 
-       				var strRegex=/^((http|https|ftp):\/\/)?(\w(\:\w)?@)?([0-9a-z_-]+\.)*?([a-z0-9-]+\.[a-z]{2,6}(\.[a-z]{2})?(\:[0-9]{2,6})?)((\/[^?#<>\/\\*":]*)+(\?[^#]*)?(#.*)?)?$/i;   
-			        var re=new RegExp(strRegex);  
+       				let strRegex=/^((http|https|ftp):\/\/)?(\w(\:\w)?@)?([0-9a-z_-]+\.)*?([a-z0-9-]+\.[a-z]{2,6}(\.[a-z]{2})?(\:[0-9]{2,6})?)((\/[^?#<>\/\\*":]*)+(\?[^#]*)?(#.*)?)?$/i;   
+			        let re=new RegExp(strRegex);  
 			        if (re.test(str_url)){ 
 			           return (true);  
 			        }else{  
@@ -51,19 +52,17 @@
 			    } 
 				ws.addEventListener('show',creatEmbed(posturl),false);
 				function creatEmbed (url) {
-					var topoffset='45px';
+					let topoffset='45px';
 					if(plus.navigator.isImmersedStatusbar()){// 兼容immersed状态栏模式
 						topoffset=(Math.round(plus.navigator.getStatusbarHeight())+45)+'px';
 					}
 					plus.nativeUI.showWaiting('',{style:'black',modal:false,background:'rgba(0,0,0,0)'});
 					embed=plus.webview.create(url,'embed',{top:topoffset,bottom:'0px',position:'dock',dock:'bottom',bounce:'vertical'});
 					ws.append(embed);
-					embed.addEventListener('loaded',function(){
-						plus.nativeUI.closeWaiting();
-					},false);
-					embed.addEventListener('loading',function(){
-						plus.nativeUI.showWaiting('',{style:'black',modal:false,background:'rgba(0,0,0,0)'});
-					},false);
+					embed.addEventListener('loaded',()=>plus.nativeUI.closeWaiting(),false);
+					embed.addEventListener('loading',()=>
+						plus.nativeUI.showWaiting('',{style:'black',modal:false,background:'rgba(0,0,0,0)'})
+					,false);
 				}
 			});
 		</script>

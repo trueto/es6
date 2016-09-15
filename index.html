@@ -20,10 +20,10 @@
 	    <!-- 可选择菜单 -->
 	    <ul class="mui-table-view">
 	      <li class="mui-table-view-cell">
-	        <a href="javascript:openW('https://github.com/trueto');">MygitHub</a>
+	        <a id="github">MygitHub</a>
 	      </li>
 	      <li class="mui-table-view-cell">
-	        <a href="javascript:openW('http://job.trueto.cn');">我的博客</a>
+	        <a id="blob">我的博客</a>
 	      </li>
 	      <li class="mui-table-view-cell">
 	        <a href="mailto:1509359472@qq.com?subject=trueto,你好！">邮箱联系</a>
@@ -37,44 +37,49 @@
 	    </ul>
 	</div>
 </body>
+<script src="js/browser.min.js" ></script>
 <script src="js/mui.min.js"></script>
 <script src="js/commn.js" ></script>
 <script src="js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" charset="utf-8">
+<script type="text/babel" charset="utf-8">
      mui.init();
-     function openW (url) {
-     	mui('#sheet').popover('toggle');
-		openShow(url,'index');
-     }
-     mui.plusReady(function () {
-     	var width = window.innerWidth,
+     mui.plusReady(()=>{
+     	let width = window.innerWidth,
      	    height = window.innerHeight,
      	    str =width+'px '+height+'px';
      	if (plus.os.name=='Android') {
      		$('.indexbg').css('background-size',str);
      	}
-     	$('.indextab a').on('click',function (e) {
+     	$('.indextab a').on('click',function (e){
 			e.preventDefault();
 			if ($(this).attr('href')) {
 				openShow($(this).attr('href'),'index');
 			};
 		});
-		document.getElementById("info").addEventListener('tap',function () {
+		document.getElementById("github").addEventListener('tap',()=>{
 			mui('#sheet').popover('toggle');
+			openShow('https://github.com/trueto','index');
 		});
+		document.getElementById("blob").addEventListener('tap',()=>{
+			mui('#sheet').popover('toggle');
+			openShow('http://job.trueto.cn','index');
+		});
+		document.getElementById("info").addEventListener('tap',()=>
+			mui('#sheet').popover('toggle')
+		);
 		//预加载list
 		mui.preload({
 			url:'html/list.html',
 			id:'list'
 		});
-		document.getElementById("indexin").addEventListener('tap',function () {
+		document.getElementById("indexin").addEventListener('tap',()=>
 			mui.openWindow({
 				id:'list',
 				show:{
 					aniShow:'fade-in'
 				}
 			})
-		});
+		);
      });
 </script>
 </html>

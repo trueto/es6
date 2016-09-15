@@ -17,20 +17,21 @@
 		</header>
 		<div class="mui-content" id="content">
 		</div>
+		<script src="../js/browser.min.js" ></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/commn.js" ></script>
 		<script src="../js/jquery-1.11.0.min.js" ></script>
 		<script src="../js/marked.js" ></script>
 		<script src="../js/prism.js" ></script>
-		<script type="text/javascript">
+		<script type="text/babel">
 			mui.init();
-			mui.plusReady(function () {
-				var str =plus.webview.currentWebview().title,
+			mui.plusReady(()=>{
+				let str =plus.webview.currentWebview().title,
 				    link = str.split(',')[1],
 				    title = str.split(',')[0],
 				    url='../docs/'+link+'.md';
-				document.getElementById("edit").addEventListener('tap',function () {
-					var baseurl = 'https://github.com/ruanyf/es6tutorial/edit/gh-pages/';
+				document.getElementById("edit").addEventListener('tap',()=>{
+					let baseurl = 'https://github.com/ruanyf/es6tutorial/edit/gh-pages/';
 					if (link=='README') {
 						baseurl += link+'.md';
 					} else{
@@ -39,16 +40,14 @@
 					openShow(baseurl);
 				});
 				$('.mui-title').html(title);
-				$.get(url,function (data) {
+				$.get(url,data=>{
 					$('.mui-content').html(marked(data));
 					$('.mui-content a').on('click',function (e) {
 						e.preventDefault();
 						openShow($(this).attr('href'));
 					});
 					//代码高亮
-					$('code').map(function() {
-					      new Prism.highlightElement(this);
-					 });
+					$('code').map(()=>Prism.highlightElement(this));
 				});
 			});
 		</script>
